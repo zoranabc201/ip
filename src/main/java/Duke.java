@@ -9,7 +9,7 @@ public class Duke {
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
-        Duke ob = new Duke();
-        ob.printWelcome();
+        Duke duke = new Duke();
+        duke.printWelcome();
     }
 }
