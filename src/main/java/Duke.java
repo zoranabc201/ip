@@ -20,7 +20,7 @@ public class Duke {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
         Duke duke = new Duke();
-        duke.printWelcome();//comment
+        duke.printWelcome();
         duke.echocommands();
     }
 }
