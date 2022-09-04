@@ -1,7 +1,7 @@
 public class Tasks {
     String taskName;
     boolean done;
-    Tasks() {
+    public Tasks() {
         taskName = "";
         done = false;
     }
@@ -10,10 +10,9 @@ public class Tasks {
     }
 
     public String taskDoneStatus() {
-        if(this.done) {
+        if (this.done) {
             return "[X]";
-        }
-        else {
+        } else {
             return "[ ]";
         }
     }
