@@ -21,6 +21,6 @@ class Deadline extends Task {
         } else {
             System.out.print("[ ]");
         }
-        System.out.print(description + "(by: " + by + ")");
+        System.out.println(description + "(by: " + by + ")");
     }
 }

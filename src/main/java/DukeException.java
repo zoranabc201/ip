@@ -17,4 +17,7 @@ public class DukeException {
     void notRecognizedException() {
         System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
     }
+    void taskOutOfBounds() {
+        System.out.println("Sorry! The given task does not exist");
+    }
 }
