@@ -70,8 +70,15 @@ public class TaskManager {
             }
             addEvent(parameter);
             break;
+        case "delete":
+            if(parameter.equals("") || !containsNumber(parameter)) {
+                e.deleteException();
+            }
+            delete(parameter);
+            break;
         default:
-            e.notRecognizedException();
+            //e.notRecognizedException();
+            System.out.println(noOfTasks);
         }
 
     }
@@ -132,5 +139,20 @@ public class TaskManager {
             tasks[noOfTasks] = new Event(description, at);
             tasks[noOfTasks++].initializeMessage();
         }
+    }
+    void delete(String parameter) {
+        int taskNo = Integer.parseInt(parameter);
+        if(taskNo > noOfTasks) {
+            e.deleteException();
+            return;
+        }
+        --noOfTasks;
+        System.out.println("Noted. I've removed this task:");
+        tasks[taskNo-1].displayMessage();
+        System.out.println("Now you have " + (noOfTasks) + " tasks in the list.");
+        for(int i = taskNo - 1; i < noOfTasks; i++) {
+            tasks[i] = tasks[i+1];
+        }
+        tasks[noOfTasks] = null;
     }
 }
