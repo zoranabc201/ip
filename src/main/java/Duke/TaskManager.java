@@ -1,8 +1,9 @@
 package Duke;
 
+import java.util.ArrayList;
+
 public class TaskManager {
     static int noOfTasks;
-    final int maxTasks = 100;
     DukeException e = new DukeException();
 
     TaskManager() {
@@ -22,7 +23,7 @@ public class TaskManager {
         }
     }
 
-    Task[] tasks = new Task[maxTasks];
+    ArrayList<Task> tasks = new ArrayList<Task>();
 
     void addTask(String command, String parameter) {
         switch (command) {
@@ -70,6 +71,12 @@ public class TaskManager {
             }
             addEvent(parameter);
             break;
+        case "delete":
+            if (parameter.equals("") || !containsNumber(parameter)) {
+                e.deleteException();
+            }
+            delete(parameter);
+            break;
         default:
             e.notRecognizedException();
         }
@@ -89,25 +96,25 @@ public class TaskManager {
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < noOfTasks; i++) {
             System.out.print(i + 1 + ".");
-            tasks[i].displayMessage();
+            tasks.get(i).displayMessage();
         }
     }
 
     void markTask(int n) {
-        tasks[n - 1].setMarked(true);
+        tasks.get(n - 1).setMarked(true);
         System.out.println("Nice I've marked this task as done:");
-        tasks[n - 1].displayMessage();
+        tasks.get(n - 1).displayMessage();
     }
 
     void unmarkTask(int n) {
-        tasks[n - 1].setMarked(false);
+        tasks.get(n - 1).setMarked(false);
         System.out.println("OK, I've marked this task as not done yet");
-        tasks[n - 1].displayMessage();
+        tasks.get(n - 1).displayMessage();
     }
 
     void addTodo(String parameter) {
-        tasks[noOfTasks] = new Todo(parameter);
-        tasks[noOfTasks++].initializeMessage();
+        tasks.add(new Todo(parameter));
+        tasks.get(noOfTasks++).initializeMessage();
     }
 
     void addDeadline(String parameter) {
@@ -117,8 +124,8 @@ public class TaskManager {
         } else {
             String description = parameter.substring(0, descriptionEnd);
             String by = parameter.substring(descriptionEnd + 3).trim();
-            tasks[noOfTasks] = new Deadline(description, by);
-            tasks[noOfTasks++].initializeMessage();
+            tasks.add(new Deadline(description, by));
+            tasks.get(noOfTasks++).initializeMessage();
         }
     }
 
@@ -129,8 +136,21 @@ public class TaskManager {
         } else {
             String description = parameter.substring(0, descriptionEnd);
             String at = parameter.substring(descriptionEnd + 3).trim();
-            tasks[noOfTasks] = new Event(description, at);
-            tasks[noOfTasks++].initializeMessage();
+            tasks.add(new Event(description, at));
+            tasks.get(noOfTasks++).initializeMessage();
         }
+    }
+
+    void delete(String parameter) {
+        int taskNo = Integer.parseInt(parameter);
+        if (taskNo > noOfTasks) {
+            e.deleteException();
+            return;
+        }
+        --noOfTasks;
+        System.out.println("Noted. I've removed this task:");
+        tasks.get(taskNo - 1).displayMessage();
+        System.out.println("Now you have " + (noOfTasks) + " tasks in the list.");
+        tasks.remove(taskNo - 1);
     }
 }

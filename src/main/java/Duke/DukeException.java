@@ -22,4 +22,6 @@ public class DukeException {
     void taskOutOfBounds() {
         System.out.println("Sorry! The given task number is out of bounds");
     }
+    void deleteException(){
+    System.out.println("Please provide a valid task number to delete");}
 }
