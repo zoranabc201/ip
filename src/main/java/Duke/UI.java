@@ -6,9 +6,18 @@ public class UI {
     Storage storage = new Storage();
     Parser parser = new Parser();
     DukeException dukeException = new DukeException();
+
+    /**
+     * Prints the welcome message
+     */
     public void welcomeMessage() {
         messages.welcomeMessage();
     }
+
+    /**
+     *Lists all the tasks
+     * @param taskList TaskList object containing all the task objects
+     */
     public void list(TaskList taskList) {
         System.out.println(messages.lineBreak);
         System.out.println(messages.listMessage);
@@ -18,6 +27,12 @@ public class UI {
         }
         System.out.println(messages.lineBreak);
     }
+
+    /**
+     * Prints one task in the given format
+     * @param taskNo the task to be printed
+     * @param taskList TaskList object containing all the task objects
+     */
     public void displayOneTask(int taskNo, TaskList taskList) {
         System.out.print(taskList.tasks.get(taskNo).getType());
         if(taskList.tasks.get(taskNo).isMark()) {
@@ -34,6 +49,15 @@ public class UI {
             System.out.println("");
         }
     }
+
+    /**
+     * Adds event task with the requisite messages
+     * @param description
+     * @param at
+     * @param isMark
+     * @param taskList
+     * @throws IOException
+     */
     public void addEvent (String description, String at, boolean isMark, TaskList taskList) throws IOException{
         System.out.println(messages.lineBreak);
         System.out.println(messages.initialAddTaskMessage);
@@ -43,6 +67,14 @@ public class UI {
         System.out.println(messages.lineBreak);
         storage.writeAllEvents(taskList);
     }
+
+    /**
+     * Adds todo task with the requisite messages
+     * @param description
+     * @param isMark
+     * @param taskList
+     * @throws IOException
+     */
     public void addTodo (String description, boolean isMark, TaskList taskList) throws IOException{
         System.out.println(messages.lineBreak);
         System.out.println(messages.initialAddTaskMessage);
@@ -52,6 +84,15 @@ public class UI {
         System.out.println(messages.lineBreak);
         storage.writeAllEvents(taskList);
     }
+
+    /**
+     * Adds deadline tasks with the requisite messages
+     * @param description
+     * @param by
+     * @param isMark
+     * @param taskList
+     * @throws IOException
+     */
     public void addDeadline (String description, String by, boolean isMark, TaskList taskList) throws IOException{
         System.out.println(messages.lineBreak);
         System.out.println(messages.initialAddTaskMessage);
