@@ -1,28 +1,22 @@
 package Duke;
 
-class Deadline extends Task {
-    String description;
+public class Deadline extends Task {
     String by;
-    Deadline(String description, String by) {
+    public Deadline(String description, String by, boolean marked) {
         this.description = description;
         this.by = by;
+        this.mark = marked;
     }
-
     @Override
-    void initializeMessage() {
-        System.out.println("Got it! I've added this task:");
-        displayMessage();
-        System.out.println("Now you have "+ TaskManager.noOfTasks +" tasks in the list.");
+    public String getTime() {
+        return by;
     }
-
     @Override
-    void displayMessage() {
-        System.out.print("[D]");
-        if(isMarked()) {
-            System.out.print("[X]");
-        } else {
-            System.out.print("[ ]");
-        }
-        System.out.println(description + "(by: " + by + ")");
+    public void setTime(String by) {
+        this.by = by;
+    }
+    @Override
+    public String getType() {
+        return "[D]";
     }
 }

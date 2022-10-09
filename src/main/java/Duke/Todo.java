@@ -1,24 +1,12 @@
 package Duke;
 
-public class Todo extends Task {
-    String description;
-    Todo(String description) {
+public class Todo extends Task{
+    public Todo(String description, boolean mark) {
         this.description = description;
+        this.mark = mark;
     }
     @Override
-    public void initializeMessage() {
-        System.out.println("Got it. I've added this task:");
-        displayMessage();
-        System.out.println("Now you have " + TaskManager.noOfTasks + " tasks in the list");
-    }
-    @Override
-    void displayMessage() {
-        System.out.print("[T]");
-        if (isMarked()) {
-            System.out.print("[X]");
-        } else {
-            System.out.print("[ ]");
-        }
-        System.out.println(description);
+    public String getType() {
+        return "[T]";
     }
 }

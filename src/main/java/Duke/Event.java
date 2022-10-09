@@ -1,27 +1,23 @@
 package Duke;
 
-class Event extends Task{
-    String description;
-    String at;
-    Event(String description, String at) {
-        this.description = description;
+public class Event extends Task {
+    @Override
+    public String getTime() {
+        return at;
+    }
+    @Override
+    public void setTime(String at) {
         this.at = at;
     }
-    @Override
-    void initializeMessage() {
-        System.out.println("Got it! I've added this task:");
-        displayMessage();
-        System.out.println("Now you have "+ TaskManager.noOfTasks +" tasks in the list.");
-    }
 
+    public String at;
+    public Event(String description, String at, boolean marked) {
+        this.description = description;
+        this.at = at;
+        this.mark = marked;
+    }
     @Override
-    void displayMessage() {
-        System.out.print("E");
-        if(isMarked()){
-            System.out.print("[X]");
-        } else {
-            System.out.print("[ ]");
-        }
-        System.out.println(description + "(at: " + at + ")");
+    public String getType() {
+        return "[E]";
     }
 }
