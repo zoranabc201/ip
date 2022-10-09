@@ -156,6 +156,24 @@ public class UI {
             unmarkTask(input, taskList);
         } else if(type.equals("delete")) {
             deleteTask(input, taskList);
+        } else if(type.equals("find")) {
+            findTask(input, taskList);
+        }
+    }
+    public void findTask(String input, TaskList taskList) {
+        String search = parser.findSearchString(input);
+        if(search.equals("")) {
+            new DukeException().findException();
+        } else {
+            System.out.println(messages.lineBreak);
+            System.out.println(messages.findMessage);
+            for(int i = 0; i < taskList.noOfTasks; i++) {
+                if(taskList.findTask(i, search)) {
+                    System.out.print(i + 1 +".");
+                    displayOneTask(i, taskList);
+                }
+            }
+            System.out.println(messages.lineBreak);
         }
     }
     public void deleteTask(String input, TaskList taskList) throws IOException {

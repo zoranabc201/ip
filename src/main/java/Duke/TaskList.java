@@ -27,4 +27,10 @@ public class TaskList {
         tasks.remove(taskNo);
         noOfTasks--;
     }
+    public boolean findTask(int taskNo, String search) {
+        if(tasks.get(taskNo).getDescription().contains(search)) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -21,4 +21,5 @@ public class Messages {
     public String markAsDone = "Nice! I've marked this task as done";
     public String unmarkAsNotDone = "OK, I've marked this task as not done";
     public String deleteMessage = "Noted. I've removed this task:";
+    public String findMessage = "Here are the matching tasks in your list:";
 }
