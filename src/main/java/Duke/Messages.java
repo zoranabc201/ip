@@ -1,6 +1,9 @@
 package Duke;
 
 public class Messages {
+    /**
+     * Prints initial welcome message
+     */
     public void welcomeMessage() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
