@@ -5,10 +5,7 @@ public class DukeException {
         System.out.println("OOPS! The description of a todo cannot be empty");
     }
     void markException() {
-        System.out.println("Please provide a valid task number to mark");
-    }
-    void unmarkException() {
-        System.out.println("Please provide a valid task number to unmark");
+        System.out.println("Please provide a valid task number to mark/unmark");
     }
     void deadlineException() {
         System.out.println("Please provide a valid description and deadline.");
@@ -18,9 +15,6 @@ public class DukeException {
     }
     void notRecognizedException() {
         System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
-    }
-    void taskOutOfBounds() {
-        System.out.println("Sorry! The given task number is out of bounds");
     }
     void deleteException() {
     System.out.println("Please provide a valid task number to delete");}

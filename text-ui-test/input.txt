@@ -8,4 +8,9 @@ event
 todo
 deadline at 6pm
 list
+find 1
+find task
+find boom
+delete 2
+list
 bye

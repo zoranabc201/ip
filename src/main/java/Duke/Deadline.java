@@ -5,7 +5,7 @@ public class Deadline extends Task {
     public Deadline(String description, String by, boolean marked) {
         this.description = description;
         this.by = by;
-        this.mark = marked;
+        this.isMark = marked;
     }
     @Override
     public String getTime() {

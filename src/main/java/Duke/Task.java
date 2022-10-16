@@ -10,14 +10,14 @@ public class Task {
     }
 
     String description;
-    boolean mark;
+    boolean isMark;
 
     public boolean isMark() {
-        return mark;
+        return isMark;
     }
 
-    public void mark(boolean mark) {
-        this.mark = mark;
+    public void mark(boolean isMark) {
+        this.isMark = isMark;
     }
     public String getType() {
         return null;

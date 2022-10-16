@@ -12,8 +12,6 @@ public class Messages {
     }
     public String lineBreak = "------------------------------------------------------------------------------";
     public String initialAddTaskMessage = "Got it. I've added this task:";
-    public String finalAddTaskMessageP1 = "Now you have ";
-    public String FinalAddTaskMessageP2 = " tasks in the list";
     public String listMessage = "Here are the tasks in your list:";
     public String marked = "[X] ";
     public String unmarked = "[ ] ";

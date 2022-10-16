@@ -6,13 +6,26 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Storage {
-    final String path = "duke.txt";
+    final String path = System.getProperty("user.dir") + "/data/duke.txt";
+
+    /**
+     * Initializes file by creating it if it does not exist
+     * @param taskList
+     * @throws IOException
+     */
 
     public void initializeFile(TaskList taskList) throws IOException {
         File duke = new File(path);
+        duke.createNewFile();
         loadFromFile(taskList, duke);
     }
 
+    /**
+     * Loads from file duke.txt once it has been created
+     * @param taskList
+     * @param duke file we are using
+     * @throws IOException
+     */
     public void loadFromFile(TaskList taskList, File duke) throws IOException {
         Scanner SC = new Scanner(duke);
         String lineOfData;
@@ -22,6 +35,12 @@ public class Storage {
             translateLineOfData(lineOfData, taskList);
         }
     }
+
+    /**
+     * Translates one line of data from duke.txt
+     * @param lineOfData line of data in question
+     * @param taskList
+     */
 
     public void translateLineOfData(String lineOfData, TaskList taskList) {
         char type = lineOfData.charAt(0);
@@ -48,30 +67,64 @@ public class Storage {
         }
     }
 
+    /**
+     * Gets description of event type task from file
+     * @param input line present in file
+     * @return event description
+     */
     public String getEventDescription(String input) {
         String event = input.substring(0, input.indexOf("/at"));
         return event.trim();
     }
 
+    /**
+     * Get description of deadline type task from file
+     * @param input line present in file
+     * @return deadline description
+     */
     public String getDeadlineDescription(String input) {
         String event = input.substring(0, input.indexOf("/by"));
         return event.trim();
     }
+
+    /**
+     * Get description of todo type task from file
+     * @param input line present in file
+     * @return todo description
+     */
 
     public String getTodoDescription(String input) {
         String event = input;
         return event.trim();
     }
 
+    /**
+     * Get time of event type task from file
+     * @param input line present in file
+     * @return time of event
+     */
+
     public String getEventTime(String input) {
         String time = input.substring(input.indexOf("/at") + 3);
         return time.trim();
     }
 
+    /**
+     * Get time of deadline type task
+     * @param input line present in file
+     * @return deadline time
+     */
+
     public String getDeadlineTime(String input) {
         String time = input.substring(input.indexOf("/by") + 3);
         return time.trim();
     }
+
+    /**
+     * Writes all tasks currently present in taskList to the file
+     * @param taskList
+     * @throws IOException
+     */
 
     public void writeAllEvents(TaskList taskList) throws IOException {
         File duke = new File(path);
@@ -90,6 +143,16 @@ public class Storage {
         }
         fw.close();
     }
+
+    /**
+     * Adds one task from taskList to file
+     * @param type type of task
+     * @param description description of task
+     * @param time time of task(if exists)
+     * @param isMarked whether task is marked or not
+     * @param fw FileWriter object to write to file
+     * @throws IOException
+     */
 
     public void addOneTask(String type, String description, String time, boolean isMarked, FileWriter fw) throws IOException {
         if (type.equals("[E]")) {
