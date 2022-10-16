@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Storage {
-    final String path = System.getProperty("user.dir") + "/data/duke.txt";
+    final String path = ("duke.txt");
 
     /**
      * Initializes file by creating it if it does not exist
