@@ -1,6 +1,11 @@
 package Duke;
 
 public class Todo extends Task{
+    /**
+     * Intialize Todo object with description and mark status
+     * @param description
+     * @param mark
+     */
     public Todo(String description, boolean mark) {
         this.description = description;
         this.isMark = mark;
